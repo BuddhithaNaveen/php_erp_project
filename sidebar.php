@@ -5,7 +5,7 @@
         SIMPLE ERP
     </div>
 
-    <div class="menu-category">Management</div>
+    <div class="menu-category">Management Module</div>
     <a href="index.php">Home</a>
     <a href="customers.php">Customers</a>
     <a href="items.php" >Items</a>

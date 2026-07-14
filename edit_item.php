@@ -5,15 +5,15 @@ include 'db_connection.php';
 if (isset($_GET['id'])) {
     $id = intval($_GET['id']);
 
-    $result = $conn->query("SELECT * FROM customers WHERE id = $id");
+    $result = $conn->query("SELECT * FROM items WHERE id = $id");
 
     if ($result->num_rows == 0) {
-        die("Customer not found.");
+        die("Item not found.");
     }
 
-    $customer = $result->fetch_assoc();
+    $item = $result->fetch_assoc();
 } else {
-    header("Location: ./customers.php");
+    header("Location: ./items.php");
     exit();
 }
 
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="UTF-8">
-    <title>Edit Customer</title>
+    <title>Edit Item</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -60,10 +60,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container mt-4">
         <div class="card shadow">
             <div class="card-header text-dark">
-                <h4>Edit Customer</h4>
+                <h4>Edit Item</h4>
             </div>
 
-            <!-- Customer Edit Form -->
+            <!-- Item Edit Form -->
             <div class="card-body">
                 <form method="POST" class="needs-validation" novalidate>
                     <div class="row mb-3">

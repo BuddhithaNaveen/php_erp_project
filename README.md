@@ -4,7 +4,7 @@
 1. Install a local server environment like XAMPP or WAMP.
 2. Clone this repository into the `htdocs` (XAMPP) or `www` (WAMP) directory.
 3. Open phpMyAdmin (`http://localhost/phpmyadmin`).
-4. Create a new database or use the attached SQL file. (If using my provided schema, run `php_erp_system.sql`).
+4. Create a new database or use the attached SQL file. (If using my provided schema, run `php_erp_system.sql`, **backup dump file given too**).
 5. Open `db_connection.php` and ensure the `$host`, `$user`, `$pass`, and `$dbname` variables match your local MySQL configuration.
 6. Navigate to `http://localhost/php_erp_project` in your browser to start using the system.
 

@@ -3,16 +3,16 @@ include 'db_connection.php';
 
 if (isset($_GET['id'])) {
     $id = intval($_GET['id']);
-    $sql = "DELETE FROM customers WHERE id = $id";
+    $sql = "DELETE FROM items WHERE id = $id";
     if ($conn->query($sql)) {
-        header("Location: ./customers.php");
+        header("Location: ./items.php");
         exit();
     } else {
-        echo "Error deleting customer.";
+        echo "Error deleting Item.";
     }
 
 } else {
-    header("Location: ./customers.php");
+    header("Location: ./items.php");
     exit();
 }
 ?>
