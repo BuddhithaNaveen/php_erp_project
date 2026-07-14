@@ -40,13 +40,6 @@ body {
     transition: 0.2s ease-in-out;
 }
 
-.sidebar a:hover,
-.sidebar a.active {
-    background-color: #1e282c;
-    color: #fff;
-    border-left: 4px solid #00a65a;
-}
-
 .content-area {
     padding: 30px;
     flex: 1;

@@ -7,8 +7,8 @@
 
     <div class="menu-category">Management</div>
     <a href="index.php">Home</a>
-    <a href="customers.php" class="active">Customers</a>
-    <a href="items.php">Items</a>
+    <a href="customers.php">Customers</a>
+    <a href="items.php" >Items</a>
 
     <div class="menu-category">Reports</div>
     <a href="report_invoice.php">Invoice Report</a>

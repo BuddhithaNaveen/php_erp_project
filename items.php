@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container mt-4">
         <h2>Item Registration</h2>
         <form action="items.php" method="POST" class="needs-validation" novalidate>
-            <!-- Form fields similar to customers.php layout... -->
+            <!--Item  Form fields -->
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label>Item Code</label><input type="text" name="item_code" class="form-control" required>
@@ -52,18 +52,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <select name="category_id" class="form-select" required>
                         <option value="">Select Category</option>
                         <?php
-                        $cats = $conn->query("SELECT * FROM item_category");
-                        while ($c = $cats->fetch_assoc()) echo "<option value='{$c['id']}'>{$c['category_name']}</option>";
+                        $cats = $conn->query("
+                            SELECT * 
+                            FROM item_category
+                        ");
+                        while ($c = $cats->fetch_assoc()) echo "
+                            <option value='{$c['id']}'>
+                                {$c['category_name']}
+                            </option>";
                         ?>
                     </select>
                 </div>
                 <div class="col-md-6">
                     <label>Sub Category</label>
                     <select name="subcategory_id" class="form-select" required>
-                        <option value="">Select Subcategory</option>
+                        <option value="">Select Sub Category</option>
                         <?php
-                        $subcats = $conn->query("SELECT * FROM item_subcategory");
-                        while ($sc = $subcats->fetch_assoc()) echo "<option value='{$sc['id']}'>{$sc['subcategory_name']}</option>";
+                        $subcats = $conn->query("
+                            SELECT * 
+                            FROM item_sub_category
+                        ");
+                        while ($sc = $subcats->fetch_assoc()) echo "
+                            <option value='{$sc['id']}'>
+                                {$sc['sub_category_name']}
+                            </option>";
                         ?>
                     </select>
                 </div>
@@ -84,15 +96,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <tr>
                 <th>Code</th>
                 <th>Name</th>
-                <th>Category ID</th>
-                <th>Subcategory ID</th>
+                <th>Category</th>
+                <th>Sub Category</th>
                 <th>Qty</th>
                 <th>Price</th>
+                <th>Action</th>
             </tr>
             <?php
-            $res = $conn->query("SELECT * FROM items");
+            $res = $conn->query("
+            SELECT * FROM items
+            ");
             while ($r = $res->fetch_assoc()) {
-                echo "<tr><td>{$r['item_code']}</td><td>{$r['item_name']}</td><td>{$r['category_id']}</td><td>{$r['subcategory_id']}</td><td>{$r['quantity']}</td><td>{$r['unit_price']}</td></tr>";
+                echo "<tr>
+                    <td>{$r['item_code']}</td>
+                    <td>{$r['item_name']}</td>
+                    <td>{$r['category_id']}</td>
+                    <td>{$r['subcategory_id']}</td>
+                    <td>{$r['quantity']}</td>
+                    <td>{$r['unit_price']}</td>
+                </tr>";
             }
             ?>
         </table>

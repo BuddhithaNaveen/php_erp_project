@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Customer Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="design.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2>Customer Registration</h2>
         <?php if (isset($_GET['success'])) echo "<div class='alert alert-success'>Customer saved successfully!</div>"; ?>
 
-        <!-- Form  -->
+        <!--Customer Form  -->
         <form action="customers.php" method="POST" class="needs-validation" novalidate>
             <div class="row mb-3">
                 <div class="col-md-2">
@@ -92,20 +92,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <th>Last Name</th>
                     <th>Contact Number</th>
                     <th>District</th>
+                    <th>Action</th>
+
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $result = $conn->query("SELECT * FROM customers");
+                $result = $conn->query("
+                SELECT c.*,
+                d.district AS district_name
+                FROM customers c
+                JOIN district d ON d.id=c.district_id
+                ");
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr>
-                        <td>{$row['id']}</td>
-                        <td>{$row['title']}</td>
-                        <td>{$row['first_name']}</td>
-                        <td>{$row['last_name']}</td>
-                        <td>{$row['contact_number']}</td>
-                        <td>{$row['district_id']}</td>
-                      </tr>";
+                    echo '<tr>' .
+                        '<td>' . $row['id'] . '</td>' .
+                        '<td>' . $row['title'] . '</td>' .
+                        '<td>' . $row['first_name'] . '</td>' .
+                        '<td>' . $row['last_name'] . '</td>' .
+                        '<td>' . $row['contact_number'] . '</td>' .
+                        '<td>' . $row['district_name'] . '</td>' .
+                        '<td >' .
+                        '<a href="' . $row['id'] . '" class="btn btn-warning btn-sm me-2">' .
+                        '<i class="bi bi-pencil-square"></i>' .
+                        '</a>' .
+                        '<a href="delete_customer.php?id=' . $row['id'] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this customer?\');">' .
+                        '<i class="bi bi-trash"></i>' .
+                        '</a>' .
+                        '</td>' .
+                        '</tr>';
                 }
                 ?>
             </tbody>

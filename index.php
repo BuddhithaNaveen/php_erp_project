@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP ERP System</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
         body {
             margin: 0;
@@ -50,29 +48,10 @@
             transition: 0.2s ease-in-out;
         }
 
-        .sidebar a:hover,
-        .sidebar a.active {
-            background-color: #1e282c;
-            color: #fff;
-            border-left: 4px solid #00a65a;
-        }
-
         .main-wrapper {
             flex: 1;
             display: flex;
             flex-direction: column;
-        }
-
-        .top-navbar {
-            height: 60px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #333;
         }
 
         .content-area {
@@ -92,7 +71,7 @@
 
         <div class="menu-category">Management</div>
         <a href="index.php">Home</a>
-        <a href="customers.php" class="active">Customers</a>
+        <a href="customers.php">Customers</a>
         <a href="items.php">Items</a>
 
         <div class="menu-category">Reports</div>
