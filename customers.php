@@ -72,10 +72,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label>District</label>
                     <select name="district_id" class="form-select" required>
                         <option value="">Select...</option>
-                        <option value="5">Colombo</option>
-                        <option value="6">Galle</option>
-                        <option value="39">Kurunegala</option>
-                        <option value="36">Kandy</option>
+                        <?php
+                        $districts = $conn->query("SELECT * FROM district");
+
+                        while ($district = $districts->fetch_assoc())
+                        echo "<option value='{$district['id']}'>
+                                {$district['district_name']}
+                            </option>";
+                        ?>
                     </select>
                 </div>
             </div>
@@ -100,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php
                 $result = $conn->query("
                 SELECT c.*,
-                d.district AS district_name
+                d.district_name AS district_name
                 FROM customers c
                 JOIN district d ON d.id=c.district_id
                 ");
@@ -113,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         '<td>' . $row['contact_number'] . '</td>' .
                         '<td>' . $row['district_name'] . '</td>' .
                         '<td >' .
-                        '<a href="' . $row['id'] . '" class="btn btn-warning btn-sm me-2">' .
+                        '<a href="edit_customer.php?id=' . $row['id'] . '" class="btn btn-warning btn-sm me-2">' .
                         '<i class="bi bi-pencil-square"></i>' .
                         '</a>' .
                         '<a href="delete_customer.php?id=' . $row['id'] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this customer?\');">' .

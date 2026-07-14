@@ -4,7 +4,7 @@ USE php_erp_system;
 -- District
 CREATE TABLE district (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    district VARCHAR(100) NOT NULL
+    district_name VARCHAR(100) NOT NULL
 );
 
 -- Customers Table
